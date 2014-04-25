@@ -1,0 +1,7 @@
+DLL\Interop.OLEDBError.dll
+C:\Users\martin\Downloads\SqlMetalPlus_src\SqlMetalPlus\bin\Microsoft.Data.ConnectionUI.Dialog.dll
+C:\Users\martin\Downloads\SqlMetalPlus_src\SqlMetalPlus\bin\Microsoft.Data.ConnectionUI.dll
+C:\Users\martin\Downloads\SqlMetalPlus_src\SqlMetalPlus\bin\SqlMetalPlus.AddIn
+SqlMetalPlus2008.AddIn
+SqlMetalPlus2010.AddIn
+C:\Users\martin\Downloads\SqlMetalPlus_src\SqlMetalPlus\bin\SqlMetalPlus.dll

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--At the root level, you can change attributes like Serialization,Class,EntityNamespace,ContextNamespace.
+But you can always customize the code if you have any need to change AccessModifier,BaseType etc
+-->
+<Database Name="TestDB" Serialization="Unidirectional"      xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <!--
+  Possible changes implemented are "Member"
+  -->
+  <Table Name="dbo.ProductCategories" Member="ProductCategories">
+    <!--
+  Possible changes implemented are "Name" and "Id".
+  for example, if your table name in db is "product_category", you can change to "ProductCategory" if you follow specific naming conventions or to satisfy FxCop:)
+  -->
+    <Type Name="ProductCategory"  >
+      <Column Name="ProductCategoryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_ProductCategories_ProductCategories" Member="ParentCategory" ThisKey="ParentCategoryID" OtherKey="ProductCategoryID" Type="ProductCategory" IsForeignKey="true" />
+      <Association Name="FK_ProductCategories_ProductCategories" Member="ChildCategories" ThisKey="ProductCategoryID" OtherKey="ParentCategoryID" Type="ProductCategory" DeleteRule="NO ACTION" />
+      <Association Name="FK_Products_ProductCategories" Member="Products" ThisKey="ProductCategoryID" OtherKey="ProductCategoryID" Type="Product" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <!--Example to add a custom property to the Product-->
+      <Column Name="NewCustomProperty" Type="System.String" CustomizationType="Add"/>
+      <Column Name="ProductCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <!--Example to change the datatype to enum and change the Member attribute value such that we can refer in our code as "ProductStatus" which is more meaningful than "ProductStatusCd".
+      Also here i have n't specified any CustomizationType.By default its assumed to be "Update".This is just to save some typing as most of the changes we do ,are updates. :)
+      
+      -->
+      <Column Name="ProductStatusCd" Member="ProductStatus" Type="global::SampleApplication.ProductStatus" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <!--For Associations, you can mention the Cardinality="One" if you know the relation is always one to one.
+      Other customizations possible are
+        1.Change the Member attribute to your custom name
+      -->
+      <Association Name="FK_Products_ProductCategories" Member="ProductCategory" ThisKey="ProductCategoryID" OtherKey="ProductCategoryID" Type="ProductCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <!--For Functions, you can change the Method name to a more meaningful name then the default generated one. Sp_getproducts->GetProducts
+      -->
+  <Function Name="dbo.sp_getproducts" Method="GetProducts">
+    <!--For Parameter, you can change the "Parameter" to a more meaningful name then the default generated one. category_id->CategoryID
+      -->
+    <Parameter Name="category_id" Parameter="CategoryID"  Type="System.Int32" DbType="Int" />
+    <!--For ElementType, you can change the Name to a more meaningful name then the default generated one. Sp_getproductsResult->ProductDetails
+      -->
+    <ElementType Name="Sp_getproductsResult">
+      <!--For ElementType Columns, you can change the Member and Type-->
+      <Column Name="ProductID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  
+  <Function CustomizationType="Delete" Name="dbo.sp_alterdiagram" Method="Sp_alterdiagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="version" Type="System.Int32" DbType="Int" />
+    <Parameter Name="definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function CustomizationType="Delete" Name="dbo.sp_creatediagram" Method="Sp_creatediagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="version" Type="System.Int32" DbType="Int" />
+    <Parameter Name="definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function CustomizationType="Delete" Name="dbo.sp_dropdiagram" Method="Sp_dropdiagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function CustomizationType="Delete" Name="dbo.sp_helpdiagramdefinition" Method="Sp_helpdiagramdefinition">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Sp_helpdiagramdefinitionResult">
+      <Column Name="version" Member="Version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="definition" Member="Definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function CustomizationType="Delete" Name="dbo.sp_helpdiagrams" Method="Sp_helpdiagrams">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Sp_helpdiagramsResult">
+      <Column Name="Database" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function CustomizationType="Delete" Name="dbo.sp_renamediagram" Method="Sp_renamediagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="new_diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+</Database>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:vs="http://schemas.microsoft.com/wix/VSExtension">
+    <Product Id="8ddd8a6e-c353-4489-9935-63b8f0e4c6c4" UpgradeCode="8e01ab03-62bd-41aa-9a73-8dad76e58976" Name="SqlMetalPlus" Language="1033" Version="1.0.0.0" Manufacturer="Azeet K. Chebrolu">
+        <Package InstallerVersion="200" Compressed="yes" />
+        <Media Id="1" Cabinet="SqlMetalPlus.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="PersonalFolder">
+                <Directory Id="VS2008LOCATION" Name="Visual Studio 2008">
+                    <Directory Id="VS2008ADDINSLOCATION" Name="Addins">
+                        <Component Id="AddinInstall2008" Guid="8AB68939-8499-4019-9D0B-2CAE843421C7">
+                          <Condition>VS90DEVENV != ''</Condition>
+                            <CreateFolder/>
+                            <RemoveFolder Id="VS2008ADDINSLOCATION" On="uninstall" />
+                            <RemoveFolder Id="VS2008LOCATION" On="uninstall" />
+                            <RegistryValue Root="HKCU" Key="SOFTWARE\SqlMetalPlus" Type="string" Value="1.0" KeyPath="yes" />
+                            <File Id="SqlMetalPlus.AddIn2008" Name="SqlMetalPlus.AddIn" ShortName="SQLMETA.ADD" Source="SqlMetalPlus2008.AddIn" />
+                            <util:XmlConfig Id="SetPath2008" Action="create" Node="value" ElementPath="//Assembly" VerifyPath="//Assembly" Value="[SQLMETALDIR]SqlMetalPlus.dll" File="[#SqlMetalPlus.AddIn2008]" On="install" Sequence="1" />
+
+                        </Component>
+                    </Directory>
+                </Directory>
+              <Directory Id="VS2010LOCATION" Name="Visual Studio 2010">
+                <Directory Id="VS2010ADDINSLOCATION" Name="Addins">
+                  <Component Id="AddinInstall2010" Guid="291A0D0B-36FB-4842-A455-90A4895A05F6">
+                    <Condition>VS2010DEVENV != ''</Condition>
+                    <CreateFolder/>
+                    <RemoveFolder Id="VS2010ADDINSLOCATION" On="uninstall" />
+                    <RemoveFolder Id="VS2010LOCATION" On="uninstall" />
+                    <RegistryValue Root="HKCU" Key="SOFTWARE\SqlMetalPlus" Type="string" Value="1.0" KeyPath="yes" />
+                    
+                    <File Id="SqlMetalPlus.AddIn2010" Name="SqlMetalPlus.AddIn" ShortName="SQLMETA.ADD" Source="SqlMetalPlus2010.AddIn" />
+                    <util:XmlConfig Id="SetPath2010" Action="create" Node="value" ElementPath="//Assembly" VerifyPath="//Assembly" Value="[SQLMETALDIR]SqlMetalPlus.dll" File="[#SqlMetalPlus.AddIn2010]" On="install" Sequence="1" />
+
+                  </Component>
+                </Directory>
+              </Directory>
+              <Directory Id="VS2013LOCATION" Name="Visual Studio 2013">
+                <Directory Id="VS2013ADDINSLOCATION" Name="Addins">
+                  <Component Id="AddinInstall2013" Guid="291A0D0B-36FB-4842-A455-90A4895A05F0">
+                    <Condition>VS2010DEVENV != ''</Condition>
+                    <CreateFolder/>
+                    <RemoveFolder Id="VS2013ADDINSLOCATION" On="uninstall" />
+                    <RemoveFolder Id="VS2013LOCATION" On="uninstall" />
+                    <RegistryValue Root="HKCU" Key="SOFTWARE\SqlMetalPlus" Type="string" Value="1.0" KeyPath="yes" />
+
+                    <File Id="SqlMetalPlus.AddIn2013" Name="SqlMetalPlus.AddIn" ShortName="SQLMETA.ADD" Source="SqlMetalPlus2013.AddIn" />
+                    <util:XmlConfig Id="SetPath2013" Action="create" Node="value" ElementPath="//Assembly" VerifyPath="//Assembly" Value="[SQLMETALDIR]SqlMetalPlus.dll" File="[#SqlMetalPlus.AddIn2013]" On="install" Sequence="1" />
+
+                  </Component>
+                </Directory>
+              </Directory>
+            </Directory>
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Id="SQLMETALDIR" Name="SqlMetalPlus v1.0">
+                    <Component Id="ProductComponent" Guid="27af1a85-9a01-4c79-bdeb-d73fd4bd9574">
+                        <Environment Id="SdkPath" Name="Path" Action="set" Part="last" Permanent="yes" System="yes" Value="C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin\"/>
+                        <!--<File Id="Interop.MSDASC.dll" Name="Interop.MSDASC.dll" ShortName="INTEROP.DLL" Source="DLL\Interop.MSDASC.dll" />-->
+                        <File Id="Interop.OLEDBError.dll" Name="Interop.OLEDBError.dll" ShortName="INTEROP1.DLL" Source="DLL\Interop.OLEDBError.dll" />
+                        <File Id="Microsoft.Data.ConnectionUI.Dialog.dll" Name="Microsoft.Data.ConnectionUI.Dialog.dll" ShortName="MICROSO.DLL" Source="$(var.SqlMetalPlus.TargetDir)Microsoft.Data.ConnectionUI.Dialog.dll" />
+                        <File Id="Microsoft.Data.ConnectionUI.dll" Name="Microsoft.Data.ConnectionUI.dll" ShortName="MICROSO1.DLL" Source="$(var.SqlMetalPlus.TargetDir)Microsoft.Data.ConnectionUI.dll" />
+                        <File Id="SqlMetalPlus.dll" Name="SqlMetalPlus.dll" ShortName="SQLMETA.DLL" Source="$(var.SqlMetalPlus.TargetPath)" />
+                        <File Id="SqlMetalPlus.AddIn2" Name="SqlMetalPlus.AddIn" ShortName="SQLMETA.ADD" Source="$(var.SqlMetalPlus.TargetDir)SqlMetalPlus.AddIn" />
+                        <util:XmlConfig Id="SetPath2" Action="create" Node="value" ElementPath="//Assembly" VerifyPath="//Assembly" Value="[SQLMETALDIR]SqlMetalPlus.dll" File="[#SqlMetalPlus.AddIn2]" On="install" Sequence="1" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="ProductFeature" Title="Main Feature" Level="1">
+            <ComponentRef Id="ProductComponent" />
+            <ComponentRef Id="AddinInstall2008" />
+            <ComponentRef Id="AddinInstall2010" />
+            <ComponentRef Id="AddinInstall2013" />
+        </Feature>
+        <PropertyRef Id="VS90DEVENV"/>
+        <PropertyRef Id="VS2010DEVENV"/>
+        <PropertyRef Id="VS2013DEVENV"/>
+        <!-- Installation condition -->
+        <Condition Message="You need to be an administrator to install this tool.">
+            Privileged
+        </Condition>
+        <Condition Message="An old version of product is already installed.">
+            NOT NEWERVERSIONDETECTED
+        </Condition>
+        <!--<Condition Message="This setup requires Visual C# 2008 standard or higher.">
+      VS90_IDE_VCSHARP_PROJECTSYSTEM_INSTALLED
+    </Condition>-->
+        <UIRef Id="WixUI_InstallDir" />
+        <UI>
+            <Property Id="WIXUI_INSTALLDIR" Value="SQLMETALDIR" />
+            <Property Id="ARPPRODUCTICON" Value="AppIcon"/>
+        </UI>
+        <Icon Id="AppIcon" SourceFile="install.ico" />
+
+    </Product>
+</Wix>

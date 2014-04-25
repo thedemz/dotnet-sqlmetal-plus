@@ -1,0 +1,8 @@
+obj\Debug\Product.wixobj
+C:\Projects\SqlMetalPlus_src\SetupProject\bin\Debug\SqlMetalPlus.msi
+C:\Projects\SqlMetalPlus_src\SetupProject\bin\Debug\SqlMetalPlus.wixpdb
+C:\Users\martin\Downloads\SqlMetalPlus_src\SetupProject\bin\Debug\SqlMetalPlus.msi
+C:\Users\martin\Downloads\SqlMetalPlus_src\SetupProject\bin\Debug\SqlMetalPlus.wixpdb
+obj\Debug\SetupProject.wixproj.BindContentsFileListnull.txt
+obj\Debug\SetupProject.wixproj.BindOutputsFileListnull.txt
+obj\Debug\SetupProject.wixproj.BindBuiltOutputsFileListnull.txt

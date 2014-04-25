@@ -1,0 +1,7 @@
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\bin\Debug\SampleApplication.exe
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\bin\Debug\SampleApplication.pdb
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\obj\Debug\SampleApplication.csprojResolveAssemblyReference.cache
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\obj\Debug\SampleApplication.Properties.Resources.resources
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\obj\Debug\SampleApplication.csproj.GenerateResource.Cache
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\obj\Debug\SampleApplication.exe
+C:\Users\martin\Downloads\SqlMetalPlus_src\SampleApplication\obj\Debug\SampleApplication.pdb

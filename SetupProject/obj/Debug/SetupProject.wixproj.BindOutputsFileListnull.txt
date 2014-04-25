@@ -1,0 +1,2 @@
+C:\Users\martin\Downloads\SqlMetalPlus_src\SetupProject\bin\Debug\SqlMetalPlus.msi
+C:\Users\martin\Downloads\SqlMetalPlus_src\SetupProject\bin\Debug\SqlMetalPlus.wixpdb

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="SqlMetalPlus.Binaries">
+            <Component Id="cmp928409DCA31F609BF55FA22E5B798640" Guid="*">
+                <File Id="fil42D2EB6C6687DFF7C692D061FC112AF9" Source="$(var.SqlMetalPlus.TargetDir)\SqlMetalPlus.dll" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SqlMetalPlus.Binaries">
+            <ComponentRef Id="cmp928409DCA31F609BF55FA22E5B798640" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SqlMetalPlus.Symbols" />
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="SqlMetalPlus.Sources">
+            <Component Id="cmpB211B2E6B58BA9537F0F6FED595F32CB" Guid="*">
+                <File Id="fil3EC86C05E53FB260D0BF98D1AE161FD4" Source="$(var.SqlMetalPlus.ProjectDir)\AssemblyInfo.cs" />
+            </Component>
+            <Component Id="cmp9818291ED78298A0643E091294B71B84" Guid="*">
+                <File Id="filAAE98B5BABCC86FF395E3BA0BBD24F75" Source="$(var.SqlMetalPlus.ProjectDir)\Connect.cs" />
+            </Component>
+            <Component Id="cmp88664A4583AE9E770864F640A208B443" Guid="*">
+                <File Id="fil53ED43DFD11A8B4AA727B21E2F4FF7DB" Source="$(var.SqlMetalPlus.ProjectDir)\NativeMethods.cs" />
+            </Component>
+            <Component Id="cmp1F55AE6E5E13669B77115F79B8FBB63F" Guid="*">
+                <File Id="filB9169C1B0DE88DB3F8F30EF45181C32B" Source="$(var.SqlMetalPlus.ProjectDir)\SqlMetalPlus.Designer.cs" />
+            </Component>
+            <Component Id="cmp2891C0923D37A934F5928BF31279D365" Guid="*">
+                <File Id="fil0E80CF968463E73967C6FE2719CC88B2" Source="$(var.SqlMetalPlus.ProjectDir)\CommandBar.resx" />
+            </Component>
+            <Component Id="cmp945AF9898B74E2FB052D1D9E8B9A6E09" Guid="*">
+                <File Id="filB211DA6F2E6488B39A3D7F8D117199BC" Source="$(var.SqlMetalPlus.ProjectDir)\SqlMetalPlus.resx" />
+            </Component>
+            <Component Id="cmp2376C07EB3009540C8780DB18F4DA93A" Guid="*">
+                <File Id="fil972AA28B43F695CF720462752B174B06" Source="$(var.SqlMetalPlus.ProjectDir)\SqlMetalPlus.csproj" />
+            </Component>
+            <Directory Id="dir8D11F7D468005CE611C591D18A1DEC0D" Name="Helpers">
+                <Component Id="cmpCA2A1FB9C0FB418BF1D954C6086F1FEF" Guid="*">
+                    <File Id="fil61F66F45BF8994FB7BF7690D40AB42BF" Source="$(var.SqlMetalPlus.ProjectDir)\Helpers\ConnectionStringHelper.cs" />
+                </Component>
+                <Component Id="cmpBB6275A626B51041EB9EC5E00EDA2911" Guid="*">
+                    <File Id="filA4EEDC5034CCED370F39AA9524713E1E" Source="$(var.SqlMetalPlus.ProjectDir)\Helpers\frmConnection.cs" />
+                </Component>
+                <Component Id="cmpC00C6AF25A7702218CC49254484C6982" Guid="*">
+                    <File Id="fil707450E5005EE1BB83CE6FB97C1CFB44" Source="$(var.SqlMetalPlus.ProjectDir)\Helpers\frmConnection.designer.cs" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SqlMetalPlus.Sources">
+            <ComponentRef Id="cmpB211B2E6B58BA9537F0F6FED595F32CB" />
+            <ComponentRef Id="cmp9818291ED78298A0643E091294B71B84" />
+            <ComponentRef Id="cmp88664A4583AE9E770864F640A208B443" />
+            <ComponentRef Id="cmp1F55AE6E5E13669B77115F79B8FBB63F" />
+            <ComponentRef Id="cmp2891C0923D37A934F5928BF31279D365" />
+            <ComponentRef Id="cmp945AF9898B74E2FB052D1D9E8B9A6E09" />
+            <ComponentRef Id="cmp2376C07EB3009540C8780DB18F4DA93A" />
+            <ComponentRef Id="cmpCA2A1FB9C0FB418BF1D954C6086F1FEF" />
+            <ComponentRef Id="cmpBB6275A626B51041EB9EC5E00EDA2911" />
+            <ComponentRef Id="cmpC00C6AF25A7702218CC49254484C6982" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="SqlMetalPlus.Content">
+            <Component Id="cmp9F32873DEFF036F78965315CFD8B6F59" Guid="*">
+                <File Id="fil417F6088B7BE5249C69D8B64C217A9F6" Source="$(var.SqlMetalPlus.ProjectDir)\..\..\..\Documents%20and%20Settings\chebra.CORP\My%20Documents\Visual%20Studio%202010\Addins\SqlMetalPlus%20-%20For%20Testing.AddIn" />
+            </Component>
+            <Component Id="cmpEFE0EFD5C594B135054BDF3F102DE184" Guid="*">
+                <File Id="filC7700F3E78D9C01C2137107EE2678D90" Source="$(var.SqlMetalPlus.ProjectDir)\codeproject_article.html" />
+            </Component>
+            <Component Id="cmp09C7468225BBCEA9DD9B487049E84F65" Guid="*">
+                <File Id="fil31CAE19EEF59CD15DDFB9502A3F85542" Source="$(var.SqlMetalPlus.ProjectDir)\SqlMetalPlus.AddIn" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SqlMetalPlus.Content">
+            <ComponentRef Id="cmp9F32873DEFF036F78965315CFD8B6F59" />
+            <ComponentRef Id="cmpEFE0EFD5C594B135054BDF3F102DE184" />
+            <ComponentRef Id="cmp09C7468225BBCEA9DD9B487049E84F65" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SqlMetalPlus.Satellites" />
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="SqlMetalPlus.Documents" />
+    </Fragment>
+</Wix>

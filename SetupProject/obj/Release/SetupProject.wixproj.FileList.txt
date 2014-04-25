@@ -1,0 +1,5 @@
+obj\Release\Product.wixobj
+C:\Projects\SqlMetalPlus_src\SetupProject\bin\Release\SqlMetalPlus.msi
+obj\Release\_SqlMetalPlus.wxs
+obj\Release\Product.Generated.wixobj
+obj\Release\_SqlMetalPlus.wixobj

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--------------------------------------------------------------------------->  
+<!--                           INTRODUCTION                                
+
+ The Code Project article submission template (HTML version)
+
+Using this template will help us post your article sooner. To use, just 
+follow the 3 easy steps below:
+ 
+     1. Fill in the article description details
+     2. Add links to your images and downloads
+     3. Include the main article text
+
+That's all there is to it! All formatting will be done by our submission
+scripts and style sheets. 
+
+-->  
+<!--------------------------------------------------------------------------->  
+<!--                        IGNORE THIS SECTION                            -->
+<html>
+<head>
+<title>The Code Project</title>
+<style>
+BODY, P, TD { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt }
+H2,H3,H4,H5 { color: #ff9900; font-weight: bold; }
+H2 { font-size: 13pt; }
+H3 { font-size: 12pt; }
+H4 { font-size: 10pt; color: black; }
+PRE { BACKGROUND-COLOR: #FBEDBB; FONT-FAMILY: "Courier New", Courier, mono; WHITE-SPACE: pre; }
+CODE { COLOR: #990000; FONT-FAMILY: "Courier New", Courier, mono; }
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.codeproject.com/App_Themes/NetCommunity/CodeProject.css"/>
+</head>
+<body bgcolor="#FFFFFF" color=#000000>
+<!--------------------------------------------------------------------------->  
+
+
+<!-------------------------------     STEP 1      --------------------------->
+<!--  Fill in the details (CodeProject will reformat this section for you) -->
+
+<pre>
+Title:       SqlMetalPlus- A VS Addin which helps in managing custom changes to DBML
+Author:      Azeet K Chebrolu 
+Email:       azeet.chebrolu@gmail.com
+Member ID:   37198
+Language:    C# 3.0
+Platform:    Windows, .NET 3.0,VS2008
+Technology:  VS Addin
+Level:       Intermediate, Advanced
+Description: This addin adds 2 context menus to all dbml files to either apply custom changes or to refresh the whole dbml file with the latest changes from database. 
+Section      LINQ
+SubSection   VS Addin
+License:     CPOL
+</pre>
+
+<!-------------------------------     STEP 2      --------------------------->
+<!--  Include download and sample image information.                       --> 
+
+<ul class=download>
+<li><a href="SqlMetalPlus/SqlMetalPlus_setup.zip">Download setup - 257 Kb </a></li>
+<li><a href="SqlMetalPlus/SqlMetalPlus_src.zip">Download source - 243 Kb</a></li>
+</ul>
+
+<p><img src="SqlMetalPlus/sqlMetalPlus.png" 
+        alt="Sample Image - maximum width is 600 pixels" width=600 height=600></p>
+
+
+<!-------------------------------     STEP 3      --------------------------->
+
+<!--  Add the article text. Please use simple formatting (<h2>, <p> etc)   --> 
+
+    <h2>
+        Introduction</h2>
+    <p>
+        When using Linq to Sql in one of our projects, we have come across a situation 
+        where we had to make lot of custom changes to the dbml file sqlmetal generates 
+        such as</p>
+    <ol>
+        <li>Changing all lookup values to enums so that our code looks more elegent</li>
+        <li>Modify the generated association member names to our own names for better 
+            readability</li>
+        <li>Removing unwanted tables/stored procedures</li>
+        <li>etc etc </li>
+    </ol>
+    <p>
+        While trying to make all the above changes, it has become cumbersome to repeat 
+        the same changes again and again when ever we regenrate the dbml.so i started 
+        with writing a small script which got transformed to a vs addin finally.</p>
+    <h2>
+        Installing the addin</h2>
+    <p>
+        I have included&nbsp;wix project along with the addin source which generates the 
+        msi.so just install and you are ready to go.&nbsp;</p>
+    <h2>
+        How it works</h2>
+    <p>
+        The addin looks for a xml file in the same folder as the dbml file with a name 
+        as dbml file+&quot;custom.xml&quot;. so if your dbml file name is Northwind.dbml then your 
+        custom mapping file should be named as &quot;northwind.dbml.custom.xml&quot;</p>
+
+<h2>How to create custom mapping xml</h2>
+
+<p>Just create a copy of the dbml file and rename as per the naming conventions by 
+    appending with &quot;custom.xml&quot;.one advantage with this approach is Visual Studio 
+    provides autocompletion for all possible attributes as well as node names.You 
+    can add a custom attribute called &quot;CustomizationType&quot; which takes 
+    &quot;<code>Add</code>&quot;,&quot;<code>Update</code>&quot;,&quot;<code>Delete</code>&quot; which specifies the customization you are looking after 
+    for that specific node.<p>For example, if you want to make a specific column from 
+        the database to be invisible in your code for what ever reason, you can update 
+        the column node in the mapping file as below
+<pre>
+<code>
+<Column CustomizationType="Delete" Name="Description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+</code>
+</pre>
+
+    <p>For changing the lookup columns type to enum , you can modify the node in the 
+        custom mapping file as below
+<pre>
+<code>
+<Column Name="ProductStatusCd" Member="ProductStatus" Type="global::YourNamespace.ProductStatus" DbType="SmallInt NOT NULL" CanBeNull="false" />
+</code>
+</pre>
+
+&nbsp;<p>If you observe the above custom change, i have changed the Member name also to 
+        &quot;ProductStatus&quot; so in my code, i can refer this column as &quot;ProductStatus&quot; 
+        instead of &quot;ProductStatusCd&quot;.<p>Similarly, you can make any custom change which 
+        is allowed in the dbml by the VS designer and save the custom xml file and the 
+        addin takes care of applying these changes to the final dbml file.<h2>Points of Interest</h2>
+
+<p>Do not use the VS Desinger to create the DBML if you want to use this addin 
+    because , i dont know for what reason, the association key names generated by VS 
+    Designer are different to the ones generated by sqlmetal tool.sqlmetal names the 
+    association keys same as the foreign key names in the database but VS designer 
+    changes them to sourcetable_targettable format.As this addin relies on 
+    sqlmetal.exe to generate the initial dbml, do not make any changes to the dbml 
+    using vs designer.ofcourse you can open the final dbml and view the same in 
+    designer to get a clear picture of what is changed and whether all changes are 
+    correctly applied.
+
+<h2>History</h2>
+
+<p>Initial version on 12th June 2009
+
+
+<!-------------------------------    That's it!   --------------------------->
+</body>
+
+</html>

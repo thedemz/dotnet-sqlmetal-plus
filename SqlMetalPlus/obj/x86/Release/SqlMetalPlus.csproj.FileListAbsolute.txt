@@ -1,0 +1,14 @@
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\SqlMetalPlus.AddIn
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\SqlMetalPlus.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\Microsoft.Data.ConnectionUI.Dialog.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\Microsoft.Data.ConnectionUI.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\Microsoft.Data.ConnectionUI.xml
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\Interop.MSDASC.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\bin\Interop.OLEDBError.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\Interop.MSDASC.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\Interop.OLEDBError.dll
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\SqlMetalPlus.csproj.ResolveComReference.cache
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\SqlMetalPlus.CommandBar.resources
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\SqlMetalPlus.SqlMetalPlus.resources
+C:\Projects\SqlMetalPlus_src\SqlMetalPlus\obj\x86\Release\SqlMetalPlus.dll

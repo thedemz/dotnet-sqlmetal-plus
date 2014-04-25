@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>DataConnectionDialog</id>
+    <version>1.2</version>
+    <title>Microsoft Data Connection Dialog</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://code.msdn.microsoft.com/Connection/Project/License.aspx</licenseUrl>
+    <projectUrl>http://code.msdn.microsoft.com/Connection/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The data connection dialog is a database tool component released with Visual Studio. It allows users to build connection strings and to connect to specific data sources.
+
+In order to use the data connection dialog independently of Visual Studio, we have released the standalone source code. You can integrate and redistribute the source code with your application according to license.</description>
+    <summary>The data connection dialog is a database tool component released with Visual Studio. It allows users to build connection strings and to connect to specific data sources.  In order to use the data connection dialog independently of Visual Studio, we have released the standalone source code. You can integrate and redistribute the source code with your application according to license.</summary>
+    <tags>database connection</tags>
+  </metadata>
+</package>
