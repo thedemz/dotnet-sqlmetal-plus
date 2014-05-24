@@ -1,7 +1,13 @@
 dotnet-sqlmetal-plus
 ====================
 
-SqlMetal.exe (Code Generation Tool) command-line tool generates code and mapping for the LINQ to SQL component of the .NET Framework. This tool is automatically installed with Visual Studio. Auto generate from a database, generate an intermediate database markup language (.dbml) file for customization this is not always forced to be done and therefore SQLMetal is needed to force a regeneration. The project adds a plugin for visual studio so SQLMetal can force this regeneration with just one click.
+The intermediate database markup language (.dbml) file is not properly updated when changing the underlying SQL model.
+
+There is a command-line tool SqlMetal.exe that is a code generation tool to generates this code and mapping for the LINQ to SQL component of the .NET Framework. This tool is automatically installed with Visual Studio.
+
+The project adds a plugin for visual studio so SQLMetal so with just one click the code generation tool will be run to force an updated .dbml file.
+
+The intermediate database markup language (.dbml) file for customization is not always automatically updated in Visual Studio, therefore SQLMetal is needed to force this code regeneration. 
 
 Origin Source:
 
