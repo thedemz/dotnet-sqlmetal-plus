@@ -15,7 +15,7 @@ http://sqlmetalplus.codeplex.com
 
 http://www.codeproject.com/Articles/37198/SqlMetalPlus-A-VS-Add-in-to-Manage-Custom-Changes
 
-The origin code should work on Visaul Studio 2008 and 2010.
+The origin code should work on Visual Studio 2008 and 2010.
 
 Added additional code to get it working on Visual Studio 2013.
 
