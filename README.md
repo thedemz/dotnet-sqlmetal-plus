@@ -21,3 +21,18 @@ Added additional code to get it working on Visual Studio 2013.
 
 
 Build the code or just download the binaries found in SetupProject/bin/Release
+
+
+
+Where is sqlmetal.exe?
+====================
+
+The sqlmetal.exe is located in the "Microsoft SDK\Windows" folder:
+
+C:\<Program Files>\Microsoft SDK\Windows\v<X.YZ>\Bin
+
+Example path:
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+
+Add this to the PATH variables.
